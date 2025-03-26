@@ -18,14 +18,16 @@ function closeSidepanel() {
     ifSidePanelClosed();
 }
 
-
+async function GetVideoData() {
+    return;
+}
 
 
 document.addEventListener("DOMContentLoaded", () => {
     const videoPlayer = document.getElementById("video-player");
     const videoTitleElement = document.getElementById("video-title");
     const videoDescriptionElement = document.getElementById("video-description");
-    const videoFeedURLArray = ["./src/video/async.mp4", "./src/video/hashtable.mp4"];
+    const videoFeedURLArray = [".src/video/", "./src/video/hashtable.mp4"];
     const videoMetadata = {
         title: ``,
         description: ``,
@@ -43,8 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
             videoPlayer.volume = 0.3;
             videoPlayer.play();
 
-            /* Write some code that display more information about
-               the video-metadata in markdown
+            /* 
+                todo:
+                    Write some code that display more information about
+                    the video-metadata in markdown
+
+                    use the backends GET method to fetch JSON video descriptions
+
             */
 
             videoTitleElement.textContent = videoMetadata.title;
