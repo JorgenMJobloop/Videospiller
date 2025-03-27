@@ -7,7 +7,7 @@ public class VideoController : ControllerBase
 {
 
     public List<Videos> videos = new List<Videos>() {
-        new Videos {ID = 1, Title = "", Description = [], VideoURL = ""},
+        new Videos {ID = 1, Title = "Writing Safe SQL Queries in .NET", Description = ["A video by Nick Chapsas on how to safely use SQL Queries in .NET"], VideoURL = "http://localhost:5067/videos/queries.webm"},
         new Videos {ID = 2, Title = "", Description = [], VideoURL = ""},
         new Videos {ID = 3, Title = "", Description = [], VideoURL = ""},
         new Videos {ID = 4, Title = "", Description = [], VideoURL = ""},
