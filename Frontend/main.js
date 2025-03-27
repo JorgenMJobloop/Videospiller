@@ -84,5 +84,4 @@ document.addEventListener("DOMContentLoaded", () => {
     // driver code with arguments!
     const videoFeedURL = "http://localhost:5067/api/videos";
     fetchVideoFeed(videoFeedURL);
-
 })
