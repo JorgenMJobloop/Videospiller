@@ -94,6 +94,9 @@ body {
 
 #like-button {
     border: none;
-    border-radius: 8px;
-    background-color: #202031;
+}
+
+#like-button:hover {
+    width: 30px;
+    cursor: pointer;
 }

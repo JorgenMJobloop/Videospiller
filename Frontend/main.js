@@ -1,6 +1,8 @@
 const countContent = document.getElementById("count-content");
 const getContent = document.getElementById("get-content");
 const videoPlayer = document.getElementById("video-player");
+const likeButton = document.getElementById("like-button");
+let isLiked = false;
 
 function openSidepanel() {
     document.getElementById("my-sidepanel").style.width = "150px";
@@ -20,6 +22,40 @@ function closeSidepanel() {
     ifSidePanelClosed();
 }
 
+async function sendVideoLike(id, numberOfLikes, url) {
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ "id": id, "numberOfLikes": numberOfLikes })
+        })
+    }
+    catch {
+        console.error("An error occured!");
+    }
+}
+
+likeButton.addEventListener("click", (id, numberOfLikes) => {
+    console.log("clicked..");
+    console.log(isLiked);
+    id = 0;
+    numberOfLikes = 0;
+    if (!isLiked) {
+        id++;
+        numberOfLikes++;
+        sendVideoLike(id, numberOfLikes, `http://localhost:5067/api/videos/${id}/like`);
+        likeButton.src = "./src/icons/like_blue.svg";
+        console.log(isLiked);
+    }
+    else {
+        likeButton.src = "./src/icons/like.svg";
+        numberOfLikes--;
+    }
+    isLiked = !isLiked;
+    console.log(isLiked);
+})
 
 /**
  * GET endpoint
@@ -56,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log(videoObject);
                 console.log("video url:", videoObject[0].videoURL);
                 console.log("video description:", videoObject[0].description)
+                console.log("video likes:", videoObject[0].numberOfLikes);
 
                 videoPlayer.src = videoObject[0].videoURL;
                 videoPlayer.volume = 0.3;
