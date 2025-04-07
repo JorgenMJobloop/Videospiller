@@ -21,7 +21,12 @@ function closeSidepanel() {
     videoPlayer.style.display = "none";
     ifSidePanelClosed();
 }
-
+/**
+ * warning: this method has several bugs, it is unable to send send data to the DTO.
+ * @param {*} id video-id
+ * @param {*} numberOfLikes how many likes does the video have? 
+ * @param {*} url RestAPI Endpoint that supports the HTTP-POST method
+ */
 async function sendVideoLike(id, numberOfLikes, url) {
     try {
         const response = await fetch(url, {
@@ -100,14 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 videoDescriptionElement.textContent = videoObject[0].description;
             }
-            /* 
-                todo:
-                    Write some code that display more information about
-                    the video-metadata in markdown
-
-                    use the backends GET method to fetch JSON video descriptions
-
-            */
 
             window.ifSidePanelClosed = () => {
                 videoPlayer.pause();
