@@ -50,7 +50,7 @@ likeButton.addEventListener("click", (id, numberOfLikes) => {
     if (!isLiked) {
         id++;
         numberOfLikes++;
-        sendVideoLike(id, numberOfLikes, `http://localhost:5067/api/videos/${id}/like`);
+        sendVideoLike(id, numberOfLikes, `http://localhost:{<din_port_her}/api/videos/${id}/like`);
         likeButton.src = "./src/icons/like_blue.svg";
         console.log(isLiked);
     }
@@ -86,7 +86,7 @@ async function GetVideoData(url) {
 
 document.addEventListener("DOMContentLoaded", () => {
     const videoDescriptionElement = document.getElementById("video-description");
-    const videoMetadata = GetVideoData("http://localhost:5067/api/videos/");
+    const videoMetadata = GetVideoData("http://localhost:{din_port_her}/api/videos/");
 
     async function fetchVideoFeed(url) {
         try {
@@ -116,6 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     // driver code with arguments!
-    const videoFeedURL = "http://localhost:5067/api/videos";
+    const videoFeedURL = "http://localhost:{din_port_her}/api/videos";
     fetchVideoFeed(videoFeedURL);
 })
